@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   with_options presence: true do
     # ニックネームがニックネームが必須かつ一意性であること
-    validates :nickname, uniqueness: true
+    validates :nickname
 
     # メールアドレスが必須でありかつ一意性であること
     validates :email,    uniqueness: true
