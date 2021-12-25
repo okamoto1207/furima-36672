@@ -11,9 +11,6 @@ class User < ApplicationRecord
     # ニックネームがニックネームが必須かつ一意性であること
     validates :nickname
 
-    # メールアドレスが必須でありかつ一意性であること
-    validates :email, uniqueness: true
-
     # パスワードを入力した際に、半角英数字（空文字NG）以外の場合は、メッセージを表示
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
