@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
-  has_many :orders
+  # has_many :items
+  # has_many :orders
 
   with_options presence: true do
     # ニックネームがニックネームが必須かつ一意性であること
