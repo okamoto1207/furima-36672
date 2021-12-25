@@ -16,8 +16,8 @@ class User < ApplicationRecord
     validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
 
     # お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須
-    validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    validates :last_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
+    validates :first_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
 
     # お名前カナ(全角)は、全角（カタカナ）での入力が必須
     validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
