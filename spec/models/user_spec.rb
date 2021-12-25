@@ -56,6 +56,11 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank", 'Password Include both letters and numbers',
                                                       "Password confirmation doesn't match Password")
       end
+      it 'メールアドレスに@が含まれていない場合登録できない' do
+        @user.email = 'test.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
+      end
       it 'パスワード（確認含む）が5文字以下だと保存できない' do
         @user.password = 'a1234'
         @user.password_confirmation = 'a1234'
