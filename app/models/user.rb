@@ -12,16 +12,16 @@ class User < ApplicationRecord
     validates :nickname
 
     # メールアドレスが必須でありかつ一意性であること
-    validates :email,    uniqueness: true
+    validates :email, uniqueness: true
 
     # パスワードを入力した際に、半角英数字（空文字NG）以外の場合は、メッセージを表示
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
-    
+
     # お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    
+
     # お名前カナ(全角)は、全角（カタカナ）での入力が必須
     validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
     validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
