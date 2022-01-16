@@ -50,7 +50,7 @@
 - belongs_to :item
 - has_one :buyer
 
-#### buyers テーブル
+#### payments テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
