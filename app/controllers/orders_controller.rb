@@ -20,12 +20,11 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    # この時点では、order_idが不要。またrequire外の情報は参照するため、mergeとする。
     params.require(:order_form).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = ENV["sk_test_b0504cc786a282d2277350e3"]
+    Payjp.api_key = "sk_test_b0504cc786a282d2277350e3"
     Payjp::Charge.create(
       amount: @item.price,        
       card: order_params[:token], 
@@ -34,7 +33,6 @@ class OrdersController < ApplicationController
   end
 
   def non_purchased_item
-    # itemがあっての、order_form（入れ子構造）。他のコントローラーで生成されたitemを使うにはcreateアクションに定義する。
     @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
   end
