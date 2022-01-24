@@ -1,3 +1,8 @@
+#### Basic認証
+- ID: srpbk403
+- Pass: masa1207
+
+
 # テーブル設計
 
 ### users テーブル
