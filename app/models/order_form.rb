@@ -5,11 +5,11 @@ class OrderForm
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は空欄か、○○○-○○○○の形で入力がされてません' }
+    validates :prefecture_id, numericality: { other_than: 0, message: "は”---”以外を選択してください" }
     validates :city
     validates :block
-    validates :phone_number, format: { with:/\A^\d[0-9]{0,10}$\z/, message: 'is invalid' }
+    validates :phone_number, format: { with:/\A[0-9]{11}\z/, message: 'は10桁もしくは11桁ではないか、"-"が抜けているか、空欄です' }
     validates :token
   end
 

@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
     # パスワードを入力した際に、半角英数字（空文字NG）以外の場合は、メッセージを表示
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-    validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
+    validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英語と半角数字で入力してください'
 
     # お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須
     validates :last_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
